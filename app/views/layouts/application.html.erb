@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bookers2</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+      <h1>Bookers</h1>
+      <nav>
+        <div class="container">
+          <div class="row">
+            <ul class="nav navbar-nav navbar-right" role="navigation">
+              <% if user_signed_in? %>
+              <li class="">
+               <%= link_to 'Home', root_path, method: :delete %>
+              </li>
+              <li class="">
+                <%= link_to 'Users', new_post_image_path %>
+              </li>
+              <li class="">
+                <%= link_to 'Books', user_path(current_user.id) %>
+              </li>
+              <li class="">
+                <%= link_to 'logout', user_path(current_user.id) %>
+              </li>
+             <% else %>
+              <li class="">
+                <%= link_to 'Home', new_user_registration_path %>
+              </li>
+              <li class="">
+                <%= link_to 'Users', new_user_session_path %>
+              </li>
+              <li class="">
+                <%= link_to 'Books', new_user_registration_path %>
+              </li>
+              <li class="">
+                <%= link_to 'login', new_user_registration_path %>
+              </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <%= yield %>
+
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-3 col-xs-offset-9">
+          <p>CopyRight Infratop.inc</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  </body>
+</html>
