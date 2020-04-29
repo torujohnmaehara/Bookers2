@@ -1,0 +1,50 @@
+<div class="container">
+  <div row>
+  	<div class="col-xs-3">
+  	<h3>User info</h3>
+  	<%= attachment_image_tag @user, :profile_image, size: "90x90", format: 'jpeg', class: "pull-left profile-img", fallback: "no_image.jpg" %> <br><br><br><br><br>
+
+  	<table class="table table-striped">
+  	  <tr>
+        <td>name</td>
+        <td><%= @user.name %></td>
+  	  </tr>
+  	  <tr>
+  	    <td>introduction</td>
+  	    <td>
+  	      <%= @user.introduction %>
+  	    </td>
+  	  </tr>
+  	</table>
+    <%= link_to edit_user_path, class: 'btn btn-default' do %>
+  	  <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
+    <% end %>
+
+	  <h2>New book</h2>
+	   <%= form_for @aaa do |book| %>
+	     <p>Title</p>
+	       <%= book.text_field :title %>
+	     <p>Body</p>
+	       <%= book.text_area :body %><br>
+		   <%= book.submit 'Create Book' %>
+	   <% end %>
+	</div>
+
+	<div class="col-xs-9 pull-right">
+	  <h3>Books</h3>
+	  <table class="table table-striped">
+	    <tbody>
+	    <% @books.each do |book| %>
+	  	<tr>
+	  	  <td><%= attachment_image_tag @user, :profile_image, size: "30x30", class: "pull-left profile-img", fallback: "no_image.jpg" %></td>
+	  	  <td><%= book.title %></td>
+	  	  <td><%= book.body %></td>
+	  	  <td><%= link_to 'Edit', edit_book_path(book.id), class: 'btn btn-default' %></td>
+	  	  <td><%= link_to 'Destroy', book_path(book.id), method: :delete, "date-confirm" => "本当に消しますか？", class: 'btn btn-default' %></td>
+	  	</tr>
+	  	<% end %>
+	    </tbody>
+	  </table>
+	</div>
+   </div>
+</div>
