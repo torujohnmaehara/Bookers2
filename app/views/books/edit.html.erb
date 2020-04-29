@@ -3,6 +3,14 @@
   <div class="container">
   	<div class="row">
   	  <div class="col-md-offset-3">
+        <% if @book.errors.any? %>
+          <%= @book.errors.count %> error prohibited this obj from being saved: <br>
+          <ul>
+            <% @book.errors.full_messages.each do |msg| %>
+              <%= msg %><br>
+            <% end %>
+          </ul>
+        <% end %>
   	  	<div class="form-group">
   	  	  <label>Title</label><br>
   	  	  <%= f.text_field :title %>
