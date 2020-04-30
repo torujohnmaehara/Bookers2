@@ -1,15 +1,6 @@
 class UsersController < ApplicationController
-
-  def create
-   @book = Book.new
-   @book.user_id = current_user.id
-   if @book.save
-      redirect_to book_path(@book), notice: 'Book was successfully created.'
-   else
-      @books = Book.all
-      render 'index'
-   end
-  end
+  before_action :authenticate_user!
+  before_action :correct_user, only: [:edit, :update]
 
   def show
     @aaa = Book.new
@@ -27,13 +18,20 @@ class UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
   end
- 
+
   def update
   	@user = User.find(params[:id])
     if @user.update(user_params)
        redirect_to user_path(@user.id), notice: 'You have updated user successfully.'
     else
   	   render 'edit'
+    end
+  end
+
+  def correct_user
+    @user = User.find(params[:id])
+    if @user != current_user
+      redirect_to user_path(current_user)
     end
   end
 

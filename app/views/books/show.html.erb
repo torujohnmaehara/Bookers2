@@ -2,7 +2,15 @@
   <%= notice %>
 </p>
 <div class="container">
-  <div row>
+  <div class="row">
+    <% if @book.errors.any? %>
+      <%= @book.errors.count %> errors prohibited this obj from being saved:<br>
+        <ul>
+          <% @book.errors.full_messages.each do |msg| %>
+            <%= msg %><br>
+          <% end %>
+        </ul>
+    <% end %>
   	<div class="col-xs-3">
   	  <h3>User info</h3>
   	  <%= attachment_image_tag @user, :profile_image, class: "pull-left profile-img", fallback: "no_image.jpg", size: "90x90" %> <br><br><br><br><br>
@@ -27,7 +35,7 @@
 	   <%= form_for @aaa do |book| %>
 	     <p>Title</p>
 	       <%= book.text_field :title %>
-	     <p>Body</p>
+	     <p>Opinion</p>
 	       <%= book.text_area :body %><br>
 		   <%= book.submit 'Create Book' %>
 	   <% end %>

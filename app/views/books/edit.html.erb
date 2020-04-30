@@ -11,6 +11,7 @@
             <% end %>
           </ul>
         <% end %>
+        <h1>Editing Book</h1>
   	  	<div class="form-group">
   	  	  <label>Title</label><br>
   	  	  <%= f.text_field :title %>
@@ -19,8 +20,8 @@
   	  	  <label>Opinion</label><br>
   	  	  <%= f.text_area :body %>
   	    </div>
-  	    <%= f.submit 'Update Book', class: "btn btn-default" %>
-  	    <%= link_to 'Show', book_path %>
+  	    <%= f.submit 'Update Book', class: "btn btn-default" %><br>
+  	    <%= link_to 'Show', book_path %> |
   	    <%= link_to 'Back', books_path %>
   	</div>
   </div>

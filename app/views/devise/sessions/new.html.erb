@@ -2,8 +2,9 @@
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.label :Name %><br />
+    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+    <span class="fa fa-user form-control-icon" aria-hidden="true"></span>
   </div>
 
   <div class="field">
