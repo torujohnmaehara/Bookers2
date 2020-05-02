@@ -10,13 +10,13 @@ class BooksController < ApplicationController
    else
       @books = Book.all
       @user = current_user
-      @aaa = Book.new
+      @nbook = Book.new
       render 'index'
    end
  end
 
  def show
-   @aaa = Book.new
+   @nbook = Book.new
    @user = current_user
    @book = Book.find(params[:id])
  end
@@ -48,7 +48,7 @@ class BooksController < ApplicationController
 
  def index
    @user = current_user
-   @aaa = Book.new
+   @nbook = Book.new
    @books = Book.all
    @book = Book.new
  end

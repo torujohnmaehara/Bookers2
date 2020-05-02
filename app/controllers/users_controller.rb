@@ -3,14 +3,14 @@ class UsersController < ApplicationController
   before_action :correct_user, only: [:edit, :update]
 
   def show
-    @aaa = Book.new
+    @nbook = Book.new
     @user = User.find(params[:id])
     @books = @user.books
   end
 
   def index
     @user = current_user
-    @aaa = Book.new
+    @nbook = Book.new
     @users = User.all
   end
 

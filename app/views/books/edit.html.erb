@@ -1,8 +1,7 @@
 <%= form_for (@book) do |f| %>
-<center>
   <div class="container">
   	<div class="row">
-  	  <div class="col-md-offset-3">
+  	  <div class="col-md-6 col-md-offset-3">
         <% if @book.errors.any? %>
           <%= @book.errors.count %> error prohibited this obj from being saved: <br>
           <ul>
@@ -12,19 +11,18 @@
           </ul>
         <% end %>
         <h1>Editing Book</h1>
-  	  	<div class="form-group">
+  	  	<div class= "field row">
   	  	  <label>Title</label><br>
-  	  	  <%= f.text_field :title %>
+  	  	  <%= f.text_field :title, class: "col-xs-12" %>
   	  	</div>
-  	  	<div class="form-group">
+  	  	<div class="field row">
   	  	  <label>Opinion</label><br>
-  	  	  <%= f.text_area :body %>
-  	    </div>
-  	    <%= f.submit 'Update Book', class: "btn btn-default" %><br>
+  	  	  <%= f.text_area :body, class: "col-xs-12" %>
+  	    </div><br>
+  	    <%= f.submit 'Update Book', class: 'col-xs-12 btn btn-primary' %><br>
   	    <%= link_to 'Show', book_path %> |
   	    <%= link_to 'Back', books_path %>
   	</div>
   </div>
 
-</center>
 <% end %>
